@@ -1,0 +1,12 @@
+---
+file_format: "1"
+id: tiny_wave
+name: The tiny wave
+type: shield
+url: https://github.com/FreebeJan/zmk/tree/main/app
+requires: [nice_nano_v2]
+features:
+  - keys
+siblings:
+  - tiny_wave_left
+  - tiny_wave_right

@@ -1,0 +1,16 @@
+if SHIELD_TINY_WAVE_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Tiny Wave"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_TINY_WAVE_LEFT || SHIELD_TINY_WAVE_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

@@ -1,0 +1,5 @@
+config SHIELD_TINY_WAVE_LEFT
+    def_bool $(shields_list_contains,tiny_wave_left)
+
+config SHIELD_TINY_WAVE_RIGHT
+    def_bool $(shields_list_contains,tiny_wave_right)
