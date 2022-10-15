@@ -17,55 +17,64 @@
         compatible = "zmk,combos";
         combo_toggle_adjst_l {
             timeout-ms = <50>;
-            key-positions = <15 16 17 18>;
+            key-positions = <13 14 15 16>;
             bindings = <&tog ADJST>;
         };
         combo_toggle_adjst_r {
             timeout-ms = <50>;
-            key-positions = <23 24 25 26>;
+            key-positions = <19 20 21 22>;
             bindings = <&tog ADJST>;
         };
     };
     behaviors {
-        lhr: left_hand_positional_hold_tap {
+        lhr: left_hand_positional_hold_tap_super {
             compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_POSITIONAL_HOLD_TAP";
+            label = "LEFT_POSITIONAL_HOLD_TAP_SUPER";
             #binding-cells = <2>;
-            flavor = "tap-unless-interrupted";
-            tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;                        // <---[[produces hold if held longer than tapping-term-ms]]
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = < 8 9 10 11 12 13 22 23 24 25 26 27 36 37 38 39 40>;    // <---[[right-hand keys]]
+            hold-trigger-key-positions = < 6 7 8 9 10 11 18 19 20 21 22 23 29 30 31 32 33 37 38 39>;    // <---[[right-hand keys]]
         };
-        rhr: left_hand_positional_hold_tap {
+        rhr: right_hand_positional_hold_tap_super {
             compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_POSITIONAL_HOLD_TAP";
+            label = "RIGHT_POSITIONAL_HOLD_TAP_SUPER";
             #binding-cells = <2>;
-            flavor = "tap-unless-interrupted";
-            tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;                        // <---[[produces hold if held longer than tapping-term-ms]]
             quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 14 15 16 17 18 19 29 30 31 32 33>;    // <---[[left-hand keys]]
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 34 35 36>;    // <---[[left-hand keys]]
         };
+	qlt: quick_tap_enabled_layer_tap {
+	    compatible = "zmk,behavior-hold-tap";
+	    label = "QUICK_LAYER_TAP";
+	    #binding-cells = <2>;
+	    flavor = "tap-preferred";
+	    tapping-term-ms = <300>;
+	    quick-tap-ms = <200>;
+	    bindings = <&mo>, <&kp>;
+	};
     };
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp ESC            &kp X        &kp V         &kp L          &kp C           &kp W             &kp K          &kp H              &kp G        &kp F         &kp Q        &kp S
-&kp TAB            &lhr LGUI U  &lhr LALT I   &lhr LCTL A    &lhr LSHIFT E   &kp O             &kp S          &rhr LSHIFT N      &rhr LCTL R  &rhr LALT T   &rhr LGUI D   &kp Y
-                   &kp Z        &kp X         &kp C          &kp P           &kp Z             &kp B          &kp M              &kp COMMA    &kp DOT       &kp J
-                                              &lt M4R COLON  &lt M3 BSPC     &lhr MEH ESC      &rhr MEH TAB   &lt M3 SPC         &lt M4L DEL
+&kp LCTL   &kp X        &kp V        &kp L          &kp C          &kp W             &kp K         &kp H          &kp G        &kp F        &kp Q        &kp RALT
+&kp LSHIFT &lhr LGUI  U &lhr LALT I  &lhr LCTL A    &lhr LSHIFT E  &kp O             &kp S         &rhr LSHIFT N  &rhr LCTL R  &rhr LALT T  &rhr LGUI D  &kp DEL
+           &kp FSLH     &kp  LBKT    &kp Y          &kp P          &kp Z             &kp B         &kp M          &kp COMMA    &kp DOT      &kp J
+                                   &qlt M3 RET    &qlt M4R BSPC   &lhr MEH ESC     &rhr MEH TAB  &qlt M4L SPC   &qlt M3 COLON
             >;
         };
 
         m3_layer {
             bindings = <
-&none            &none        &kp UNDER     &kp LBKT      &kp RBKT        &kp CARET   &kp EXCL  &kp LT      &kp GT        &kp EQUAL    &kp AMPS    &none
-&none            &kp BSLH     &kp FSLH      &kp LBRC      &kp RBRC        &kp STAR    &kp QMARK &kp LPAR    &kp RPAR      &kp MINUS    &kp COLON   &kp AT
-                 &kp HASH     &kp DLLR      &kp PIPE      &kp TILDE       &kp GRAVE   &kp PLUS  &kp PRCNT   &kp DQT       &kp SQT      &kp SEMI
-                                              &trans      &trans          &trans      &trans &trans  &trans
+&none  &none     &kp UNDER  &kp LBKT  &kp RBKT   &kp CARET      &kp EXCL   &kp LT     &kp GT    &kp EQUAL  &kp AMPS   &none
+&none  &kp BSLH  &kp FSLH   &kp LBRC  &kp RBRC   &kp STAR       &kp QMARK  &kp LPAR   &kp RPAR  &kp MINUS  &kp COLON  &kp AT
+       &kp HASH  &kp DLLR   &kp PIPE  &kp TILDE  &kp GRAVE      &kp PLUS   &kp PRCNT  &kp DQT   &kp SQT    &kp SEMI
+                            &trans    &trans     &trans         &trans     &trans     &trans
             >;
         };
         m4l_layer {
@@ -81,7 +90,7 @@
 &none            &none        &none        &none        &none          &none   &kp EXCL   &kp N7   &kp N8  &kp N9  &kp PLUS    &kp MINUS
 &none            &kp LGUI     &kp LALT     &kp LCTL     &kp LSHIFT     &none   &kp QMARK  &kp N4   &kp N5  &kp N6  &kp COMMA   &kp DOT
                  &none        &none        &none        &none          &none   &kp COLON  &kp N1   &kp N2  &kp N3  &kp SEMI
-                                           &trans      &trans          &trans  &trans     &trans   &trans
+                                           &trans      &trans          &trans  &trans     &kp N0   &trans
             >;
         };
         adjust_layer {
