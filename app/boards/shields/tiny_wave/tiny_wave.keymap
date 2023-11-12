@@ -67,7 +67,7 @@
 &bt BT_NXT &kp X        &kp V        &kp L          &kp C          &kp W             &kp K         &kp H          &kp G        &kp F        &kp Q       &bt BT_CLR
 &rst 0 0   &lhr LGUI  U &lhr LALT I  &lhr LCTL A    &lhr LSHIFT E  &kp O             &kp S         &rhr LSHIFT N  &rhr LCTL R  &rhr LALT T  &rhr LGUI D &rst 0 0 
            &kp Y        &kp DQT      &kp DQT        &kp P          &kp Z             &kp B         &kp M          &kp COMMA    &kp DOT      &kp J
-                                     &qlt M3 RET    &qlt M4 BSPC   &lhr MEH ESC      &rhr MEH TAB  &qlt M4 SPC   &qlt M3 DEL
+                                     &qlt M3 RET    &qlt M4 BSPC   &lhr MEH ESC      &rhr MEH TAB  &qlt M4 SPC   &qlt M3 CAPS
             >;
         };
 
